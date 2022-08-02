@@ -32,8 +32,8 @@ export const CateProduct = createAsyncThunk(
 export const SearchProduct = createAsyncThunk(
     "product/searchProduct",
     async (post) =>{
-        const {data} = await getProductSearch(post.data)
-        console.log("searchPro",post.data);
+        const {data} = await getProductSearch(post)
+        console.log("searchPro",data);
         return data
     }
 )

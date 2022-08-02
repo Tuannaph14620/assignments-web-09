@@ -6,6 +6,7 @@ import { PlusOutlined } from '@ant-design/icons';
 import { CateProduct, listProducts, removeProducts } from "../../../features/ProductSlice";
 import { useSelector, useDispatch } from 'react-redux'
 import { listCategory } from "../../../features/categorySlice";
+import SearchInput from "../../../components/SearchInput";
 
 const columns = (handleDelete) => [
   {
@@ -73,7 +74,7 @@ const ProductList = () => {
     dispatch(removeProducts(id))
   }
   const handleSortCate = (e) => {
-    const form_select = document.getElementsByClassName('form-select')
+    const form_select = document.getElementsByClassName('form-select').value
     console.log("form_select=", form_select);
     // dispatch(CateProduct(form_select.value))
   }
@@ -96,6 +97,7 @@ const ProductList = () => {
             </Select>
           </Form.Item>
         </Col>
+        <SearchInput></SearchInput>
         <Link to="/admin/product/add">
           <Button type="dashed" shape="circle" icon={<PlusOutlined />} />
         </Link>
