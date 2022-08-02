@@ -1,124 +1,155 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
-
+import React, { useEffect } from "react";
+import styled from "styled-components";
+import { Typography, Col, Row, Button, Checkbox, Form, Input, InputNumber, Select, message } from 'antd'
+import UploadImage from "../../../components/UploadImage";
+import { useNavigate, useParams } from "react-router-dom";
+import { useForm } from "antd/lib/form/Form";
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { toast, ToastContainer } from 'react-toastify'
-import { listCategory } from '../../../features/categorySlice'
-import { addProducts } from '../../../features/productSlice'
+import { listCategory } from "../../../features/categorySlice";
+import { addProducts, editProducts } from "../../../features/ProductSlice";
+import { listOneProduct } from "../../../api/product";
+
+
+const { TextArea } = Input
+const { Option } = Select;
 
 const AddProduct = () => {
-    const [img, setImg] = useState()
-    const dispatch = useDispatch()
-    const category  = useSelector(data => data.category.value)
-    useEffect(() => {
-        dispatch(listCategory())
-    }, []);
-    const notify = ()=> toast("Thêm thành công!")
-    const {register, handleSubmit, formState: {errors},reset} = useForm()
-    const navigate = useNavigate()
-    const onSubmit = data =>{
-        const number= Number(data.categoryId)
-        dispatch(addProducts({...data,img,categoryId:number}))
-        console.log({...data, img, categoryId:number});
-        // console.log(typeof number);
-        reset()
-        notify()
+  const { id } = useParams()
+  const [form] = Form.useForm()
+  const dispatch = useDispatch()
+  const category = useSelector(data => data.category.value)
+  const product = useSelector(data => data.product.value)
+  useEffect(() => {
+    dispatch(listCategory())
+    if (id) {
+      const get = async (id) => {
+        const res = await listOneProduct(id)
+        form.setFieldsValue(res.data)
+      }
+      get(id)
     }
-    const InputImage = async (e)=>{
-      const file = e.target.files[0];
-            const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/dl8w6p4sf/image/upload";
+  }, []);
+  const { reset } = useForm()
+  const navigate = useNavigate()
+  const onSubmit = data => {
+    if (id) {
+      const number = Number(data.categoryId)
+      dispatch(editProducts({ ...data, categoryId: number }))
+      navigate('/admin/product')
+    } else {
+      const number = Number(data.categoryId)
+      dispatch(addProducts({ ...data, categoryId: number }))
 
-            const formData = new FormData();
-
-            formData.append("file", file);
-            formData.append("upload_preset", "jovx8mjh");
-
-            // call api cloudinary
-
-            const response = await axios.post(CLOUDINARY_API, formData, {
-                headers: {
-                    "Content-Type": "application/form-data",
-                },
-            });
-            setImg(response.data.url)
+      navigate('/admin/product')
+      // console.log(typeof number);
+      reset()
     }
+
+  }
   return (
-    <div className="col-10 grid-margin">
-  <div className="card">
-    <div className="card-body">
-      <h4 className="card-title">Thêm sản phẩm</h4>
-      <form onSubmit={handleSubmit(onSubmit)} className="form-sample">
-        <div className="row">
-          <div className="col-md-6">
-            <div className="form-group row">
-              <label className="col-sm-3 col-form-label">Tên sản phẩm</label>
-              <div className="col-sm-9">
-                <input type="text" {...register('name', {required: true})} className="form-control" />
-                {errors.name && <span>Tên sản phẩm bắt buộc phải nhập</span>}
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="form-group row">
-              <label className="col-sm-3 col-form-label">Giá sản phẩm</label>
-              <div className="col-sm-9">
-                <input type="text" {...register('price', {required: true})} className="form-control" />
-                {errors.price && <span>Giá sản phẩm bắt buộc phải nhập</span>}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-6">
-          <div className="form-group row">
-              <label className="col-sm-3 col-form-label">Số lượng</label>
-              <div className="col-sm-9">
-                <input type="text" {...register('quantity', {required: true})} className="form-control"  />
-                {errors.quantity && <span>Số lượng sản phẩm bắt buộc phải nhập</span>}
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="form-group row">
-              <label className="col-sm-3 col-form-label">Ngày nhập</label>
-              <div className="col-sm-9">
-                <input type="date" {...register('createdAt')} className="form-control" placeholder="dd/mm/yyyy" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-6">
-            <div className="form-group row">
-              <label className="col-sm-3 col-form-label">Category</label>
-              <div className="col-sm-9">
-                <select {...register('categoryId', {required: true})} className="form-control">
-                    {category?.map((item,index) => {
-                        return <option key={index} value={`${item.id}`}> {item.nameCate}</option>
-                    })}
-                </select>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="form-group row">
-              <label className="col-sm-3 col-form-label">Ảnh sản phẩm</label>
-              <div className="col-sm-9">
-                <input onChange={InputImage} type="file" className='form-control'/>
-              </div>
-            </div>
-          </div>
-          <ToastContainer/>
-          <button className='btn btn-primary mb-2 w-44'>Thêm sản phẩm </button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
+    <>
+      <Breadcrumb>
+        <Typography.Title level={2} style={{ margin: 0 }}>
+          Thêm mới
+        </Typography.Title>
+      </Breadcrumb>
+      <Row gutter={16}>
+        <Col span={10}>
+          <UploadImage />
+        </Col>
+        <Col span={14}>
+          <Typography.Title level={5}>Thông tin sản phẩm</Typography.Title>
+          <Form
+            form={form}
+            onFinish={onSubmit}
+            autoComplete="on"
+            labelCol={{ span: 24 }}
+          >
+            <Form.Item
+              name="name"
+              labelCol={{ span: 24 }}
+              label="Tên sản phẩm"
+              rules={[{ required: true, message: 'Tên sản phẩm không được trống' }]}
+            >
+              <Input size="large" />
+            </Form.Item>
 
+            <Row gutter={16}>
+              <Col span={12}>
+                <Form.Item
+                  name="originalPrice"
+                  label="Giá gốc"
+                  labelCol={{ span: 24 }}
+                  rules={[{ required: true, message: 'Giá sản phẩm không được để trống' }]}
+                >
+                  <InputNumber style={{ width: '100%' }} size="large" />
+                </Form.Item>
+              </Col>
+              <Col span={12}>
+                <Form.Item
+                  name="saleOffPrice"
+                  label="Giá giảm"
+                  labelCol={{ span: 24 }}
+                  rules={[{ required: true, message: 'Giá khuyết mãi phải nhỏ hơn giá gốc' }]}
+                >
+                  <InputNumber style={{ width: '100%' }} size="large" />
+                </Form.Item>
+              </Col>
+              <Col span={12}>
+                <Form.Item
+                  label="Phân loại"
+                  name="category"
+                  rules={[{ required: true, message: 'Danh mục không được để trống' }]}
+                >
+                  <Select style={{ width: '100%' }} size="large">
+                    {category?.map(item => {
+                      if (Number(product.category) === Number(item.id)) {
+                        return <option selected value={`${item.id}`}> {item.name}</option>
+                      }
+                      return <option value={`${Number(item.id)}`}> {item.name}</option>
+                    })}
+                  </Select>
+                </Form.Item>
+              </Col>
+            </Row>
+
+            <Form.Item
+              name="feature"
+              labelCol={{ span: 24 }}
+              label="Đặc điểm nổi bật"
+              rules={[{ required: true, message: 'Đặc điểm sản phẩm' }]}
+            >
+              <TextArea name="feature" />
+            </Form.Item>
+            <Form.Item
+              name="description"
+              labelCol={{ span: 24 }}
+              label="Mô tả sản phẩm"
+              rules={[{ required: true, message: 'Mô tả sản phẩm' }]}
+            >
+              <TextArea name="description" />
+            </Form.Item>
+
+            <Form.Item>
+              <Button type="primary" htmlType="submit">
+                Tạo mới sản phẩm
+              </Button>
+            </Form.Item>
+          </Form>
+        </Col>
+      </Row>
+    </>
   )
 }
+
+const Breadcrumb = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+`
+
+const Label = styled.div`
+	font-size: 13px;
+`
 
 export default AddProduct

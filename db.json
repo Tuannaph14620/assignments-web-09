@@ -3,14 +3,6 @@
   "products": [
     {
       "name": "Apple iPhone 13 Pro Max",
-      "originalPrice": 122222,
-      "saleOffPrice": 12312321312,
-      "feature": "Apple iPhone 13 Pro Max",
-      "description": "Apple iPhone 13 Pro Max",
-      "id": 1
-    },
-    {
-      "name": "Apple iPhone 13 Pro Max",
       "originalPrice": 33990000,
       "saleOffPrice": 27390000,
       "feature": "Màn hình Super Retina XDR 6.7 inch với ProMotion cho cảm giác nhanh nhạy hơn3\nChế độ Điện Ảnh làm tăng thêm độ sâu trường ảnh nông và tự động thay đổi tiêu cự trong video\nHệ thống camera chuyên nghiệp Telephoto, Wide và Ultra Wide 12MP; LiDAR Scanner; phạm vi thu phóng quang học 6x; chụp ảnh macro; Phong Cách Nhiếp Ảnh, video ProRes, HDR thông minh thế hệ 4, chế độ Ban Đêm, Apple ProRAW, khả năng quay video HDR Dolby Vision 4K",
@@ -42,31 +34,24 @@
       "id": 5
     },
     {
-      "name": "Hậu Chắm",
-      "originalPrice": 121212,
-      "saleOffPrice": 1121212,
-      "categories": "phone",
-      "feature": "dssdds",
-      "description": "sddddd",
+      "name": "Tuấn",
+      "originalPrice": 100000,
+      "saleOffPrice": 1200000,
+      "category": "1",
+      "feature": "sedwaefdsfsf",
+      "description": "sfsfsfdsdfs",
+      "categoryId": null,
       "id": 6
     },
     {
       "name": "Nguyễn Anh Tuấn",
-      "originalPrice": 12345,
-      "saleOffPrice": 12345,
-      "categories": "phone",
-      "feature": "sdvdfvdfvdvfdv",
-      "description": "dfbdbdnbfgnfgnghn",
+      "originalPrice": 322300,
+      "saleOffPrice": 3232232,
+      "category": "2",
+      "feature": "23e2d2 d3",
+      "description": "sdc 23 2d2d",
+      "categoryId": null,
       "id": 7
-    },
-    {
-      "name": "Nguyễn Anh Tuấn",
-      "originalPrice": 111111,
-      "saleOffPrice": 22222,
-      "categories": "laptop",
-      "feature": "222",
-      "description": "csc",
-      "id": 8
     }
   ],
   "categorys": [
@@ -77,6 +62,14 @@
     {
       "id": 2,
       "name": "LapTop"
+    },
+    {
+      "name": "Máy tính bảng",
+      "id": 3
+    },
+    {
+      "name": "Âm thanh",
+      "id": 4
     }
   ]
 }

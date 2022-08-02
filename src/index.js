@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
 
 const container = document.getElementById('root');
