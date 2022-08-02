@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Typography, Button, Table, Space, Popconfirm, Col, Select, Form } from 'antd';
-import { Link, NavLink} from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { PlusOutlined } from '@ant-design/icons';
 import { CateProduct, listProducts, removeProducts } from "../../../features/ProductSlice";
 import { useSelector, useDispatch } from 'react-redux'
+import { listCategory } from "../../../features/categorySlice";
 
 const columns = (handleDelete) => [
   {
@@ -66,14 +67,15 @@ const ProductList = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(listProducts())
+    dispatch(listCategory())
   }, [])
   const handleDelete = async (id) => {
     dispatch(removeProducts(id))
   }
-  const handleSortCate = ()=>{
-    const form_select =document.querySelector(".form-select")
-    console.log("form_select=",form_select.value);
-    dispatch(CateProduct(form_select.value))
+  const handleSortCate = (e) => {
+    const form_select = document.getElementsByClassName('form-select')
+    console.log("form_select=", form_select);
+    // dispatch(CateProduct(form_select.value))
   }
   return (
     <>
@@ -84,11 +86,12 @@ const ProductList = () => {
         <Col span={12}>
           <Form.Item
             label="Bộ lọc"
-            name="category"
+
           >
-            <Select onChange={()=>handleSortCate()} className="form-select" style={{ width: '100%' }} size="large">
-              {category?.map(item => {
-                return <option value={`${Number(item.id)}`}> {item.name}</option>
+            <Select onChange={() => handleSortCate()} className={"form_select"} style={{ width: '100%' }} size="large">
+              <option>-- Danh mục --</option>
+              {category?.map((item, index) => {
+                return <option key={index} value={item.id}>{item.name}</option>
               })}
             </Select>
           </Form.Item>

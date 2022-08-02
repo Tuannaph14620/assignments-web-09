@@ -1,5 +1,14 @@
 {
-  "users": [],
+  "users": [
+    {
+      "email": "anhtuans2783@gmail.com",
+      "password": "$2a$10$D5P6xX2hk5e6sI4lLKPN4uAcZS6eg1vIuBTSHRkoiGEwRtncANNlW",
+      "username": "Tuấnn",
+      "address": "Dược Hạ -Tiên Dược - Sóc Sơn - Hà Nội",
+      "phone": "1653574552",
+      "id": 1
+    }
+  ],
   "products": [
     {
       "name": "Apple iPhone 13 Pro Max",
