@@ -11,7 +11,9 @@ import AddProduct from './pages/Admin/Product/AddProduct';
 import ProductList from './pages/Admin/Product/ProductList';
 import SignIn from './pages/Clients/Auth/Signin';
 import SignUp from './pages/Clients/Auth/Signup';
-import Homepage from './pages/Clients/Homepage';
+import HomePage from './pages/Clients/HomePage';
+import ProductDetail from './pages/Clients/ProductDeltail';
+
 
 function App() {
   return (
@@ -21,16 +23,9 @@ function App() {
         <Route path='signin' element={<SignIn />} />
         <Route path='signup' element={<SignUp />} />
         <Route path='/' element={<ClientsLayout />}>
-          <Route index element={<Homepage />} />
-          {/* <Route path='product'>
-            <Route index  element={<ProductPage/>}/>
-            <Route path=':id/:cate' element={<DetailProductPage/>} />
-          </Route>
-          <Route path='pro' element={<SlidebarProduct/>}/>
-          
-          <Route path='cart' element={<CartPage/>} />
-          <Route path='new' element={<ListAllNew/>} />
-          <Route path='contact' element={<ContactPage/>} /> */}
+          <Route index element={<HomePage />} />
+          <Route path='product/:id/:cate' element={<ProductDetail/>} />
+     
         </Route>
         <Route path='admin' element={ <PrivateRouter><AdminLayout /></PrivateRouter> }>
           <Route index element={<Navigate to="dashboard" />} />

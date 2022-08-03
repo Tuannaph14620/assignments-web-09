@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Typography, Col, Row, Button, Checkbox, Form, Input, InputNumber, Select, message } from 'antd'
-import UploadImage from "../../../components/UploadImage";
+
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "antd/lib/form/Form";
 import { useSelector, useDispatch } from 'react-redux'
 import { listCategory } from "../../../features/categorySlice";
 import { addProducts, editProducts } from "../../../features/ProductSlice";
 import { listOneProduct } from "../../../api/product";
+import UploadImage from "../../../components/UploadImage";
 
 
 const { TextArea } = Input
@@ -65,6 +66,7 @@ const AddProduct = () => {
             autoComplete="on"
             labelCol={{ span: 24 }}
           >
+
             <Form.Item
               name="name"
               labelCol={{ span: 24 }}
@@ -98,7 +100,7 @@ const AddProduct = () => {
               <Col span={12}>
                 <Form.Item
                   label="Phân loại"
-                  name="category"
+                  name="categoryId"
                   rules={[{ required: true, message: 'Danh mục không được để trống' }]}
                 >
                   <Select style={{ width: '100%' }} size="large">

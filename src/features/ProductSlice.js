@@ -26,6 +26,7 @@ export const CateProduct = createAsyncThunk(
     "product/cateProduct",
     async (id) =>{
         const {data} = await ListCateProduct(id)
+        console.log(data);
         return data
     }
 )

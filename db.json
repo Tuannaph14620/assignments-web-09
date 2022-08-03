@@ -49,7 +49,7 @@
       "category": "1",
       "feature": "sedwaefdsfsf",
       "description": "sfsfsfdsdfs",
-      "categoryId": null,
+      "categoryId": 1,
       "id": 6
     },
     {
@@ -59,8 +59,26 @@
       "category": "2",
       "feature": "23e2d2 d3",
       "description": "sdc 23 2d2d",
-      "categoryId": null,
+      "categoryId": 2,
       "id": 7
+    },
+    {
+      "name": "Tuấn 02",
+      "originalPrice": 2344,
+      "saleOffPrice": 23423,
+      "categoryId": 3,
+      "feature": "fdfdsfsfdfvdsfv",
+      "description": "dfvdsfvsdfvdsfvsdfv",
+      "id": 8
+    },
+    {
+      "name": "erfsed rfsdfv",
+      "originalPrice": 32200,
+      "saleOffPrice": 2232323,
+      "categoryId": 2,
+      "feature": "232223",
+      "description": "233223e23e",
+      "id": 9
     }
   ],
   "categorys": [
