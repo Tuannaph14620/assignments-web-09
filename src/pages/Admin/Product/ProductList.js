@@ -73,10 +73,11 @@ const ProductList = () => {
   const handleDelete = async (id) => {
     dispatch(removeProducts(id))
   }
+
   const handleSortCate = (e) => {
-    const form_select = document.getElementsByClassName('form-select').value
-    console.log("form_select=", form_select);
-    // dispatch(CateProduct(form_select.value))
+   
+    dispatch(CateProduct(e))
+    
   }
   return (
     <>
@@ -87,9 +88,8 @@ const ProductList = () => {
         <Col span={12}>
           <Form.Item
             label="Bộ lọc"
-
           >
-            <Select onChange={() => handleSortCate()} className={"form_select"} style={{ width: '100%' }} size="large">
+            <Select onChange={(e) => handleSortCate(e)} className='form_select' style={{ width: '100%' }} size="large">
               <option>-- Danh mục --</option>
               {category?.map((item, index) => {
                 return <option key={index} value={item.id}>{item.name}</option>
