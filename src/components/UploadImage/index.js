@@ -11,9 +11,10 @@ const UploadImage = (props) => {
   const imgError = "https://www.freeiconspng.com/thumbs/error-icon/error-icon-32.png"
   const [img, setImg] = useState()
 
-  // setImg(props.initValue)
-  console.log(props.initValue);
-  
+  useEffect(() => {
+    setImg(props.initImage)
+  }, []);
+
   
   const changeImg = (event ) =>{
     const file = event.target.files[0]
@@ -26,8 +27,7 @@ const UploadImage = (props) => {
   }
 
   const pushImg = (data ) =>{
-    props.image(data)
-    console.log(data);
+    props.img(data)
     
   }
 
@@ -39,8 +39,8 @@ const UploadImage = (props) => {
       pushImg(res.data.url)
     } catch (error) {
       setImg(imgError)
-      alert('lỗi !!!')
     }
+    
   }
   return (
     <>

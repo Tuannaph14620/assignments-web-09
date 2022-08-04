@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Typography, Col, Row, Button, Checkbox, Form, Input, InputNumber, Select, message } from 'antd'
 
@@ -17,15 +17,23 @@ const { Option } = Select;
 const AddProduct = () => {
   const { id } = useParams()
   const [form] = Form.useForm()
+  const [img, setImg] = useState('')
+  const [initImg, setInitImg] = useState('')
   const dispatch = useDispatch()
   const category = useSelector(data => data.category.value)
   const product = useSelector(data => data.product.value)
+
+  const getImg = (data) =>{
+    setImg(data)
+  }
+
   useEffect(() => {
     dispatch(listCategory())
     if (id) {
       const get = async (id) => {
         const res = await listOneProduct(id)
         form.setFieldsValue(res.data)
+        setInitImg(res.data.img)
       }
       get(id)
     }
@@ -35,11 +43,11 @@ const AddProduct = () => {
   const onSubmit = data => {
     if (id) {
       const number = Number(data.categoryId)
-      dispatch(editProducts({ ...data, categoryId: number }))
+      dispatch(editProducts({ ...data, categoryId: number, img }))
       navigate('/admin/product')
     } else {
       const number = Number(data.categoryId)
-      dispatch(addProducts({ ...data, categoryId: number }))
+      dispatch(addProducts({ ...data, categoryId: number, img }))
 
       navigate('/admin/product')
       // console.log(typeof number);
@@ -56,7 +64,7 @@ const AddProduct = () => {
       </Breadcrumb>
       <Row gutter={16}>
         <Col span={10}>
-          <UploadImage />
+          <UploadImage initImage={initImg} img={getImg} />
         </Col>
         <Col span={14}>
           <Typography.Title level={5}>Thông tin sản phẩm</Typography.Title>

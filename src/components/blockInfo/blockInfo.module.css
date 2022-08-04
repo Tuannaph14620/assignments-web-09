@@ -13,3 +13,7 @@
 .text-content{
     font-weight: 500;
 }
+.link{
+    text-decoration: none;
+    color: white;
+}

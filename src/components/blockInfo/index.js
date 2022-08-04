@@ -11,7 +11,8 @@ const BlockInfo = (props ) => {
         {props.icon ? 
         <FontAwesomeIcon className={cx('icon')} icon={props.icon}/>
         : ""}
-        <span className={cx('text-content')}>{props.text}</span>
+        <a className={cx('link')} href='/cart'>
+        <span className={cx('text-content')}>{props.text}</span></a>
 
     </div>
   )

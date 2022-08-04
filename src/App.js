@@ -11,6 +11,7 @@ import AddProduct from './pages/Admin/Product/AddProduct';
 import ProductList from './pages/Admin/Product/ProductList';
 import SignIn from './pages/Clients/Auth/Signin';
 import SignUp from './pages/Clients/Auth/Signup';
+import CartPage from './pages/Clients/Cart/CartPage';
 import HomePage from './pages/Clients/HomePage';
 import ProductDetail from './pages/Clients/ProductDeltail';
 
@@ -25,7 +26,7 @@ function App() {
         <Route path='/' element={<ClientsLayout />}>
           <Route index element={<HomePage />} />
           <Route path='product/:id/:cate' element={<ProductDetail/>} />
-     
+          <Route path='cart' element={<CartPage/>} />
         </Route>
         <Route path='admin' element={ <PrivateRouter><AdminLayout /></PrivateRouter> }>
           <Route index element={<Navigate to="dashboard" />} />

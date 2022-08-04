@@ -34,9 +34,9 @@ const columns = (handleDelete) => [
   },
   {
     title: 'Ảnh sản phẩm',
-    dataIndex: 'image',
-    key: 'image',
-    render: () => <img src={'image'} alt="" width={'200px'} />
+    dataIndex: 'img',
+    key: 'img',
+    render: (_, record) => <img src={record.img} alt="" width={'100px'} />
   },
   {
     title: 'Mô tả',

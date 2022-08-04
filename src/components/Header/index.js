@@ -13,7 +13,9 @@ const Header = () => {
     <div className={cx('container')}>
       <div className={cx('wraper')}>
         <div className='wraper-logo'>
+          <a href='/'>
           <img className={cx('logo')} src={logo} alt="" />
+          </a>
         </div>
         <div className={cx('wraper-search')}>
           <button className={cx('btn-search')}><SearchOutlined /></button>
