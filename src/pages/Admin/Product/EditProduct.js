@@ -14,7 +14,9 @@ import UploadImage from "../../../components/UploadImage";
 const { TextArea } = Input
 const { Option } = Select;
 
-const AddProduct = () => {
+const EditProduct = () => {
+  const { id } = useParams()
+  const [form] = Form.useForm()
   const [img, setImg] = useState('')
   const [initImg, setInitImg] = useState('')
   const dispatch = useDispatch()
@@ -27,16 +29,22 @@ const AddProduct = () => {
 
   useEffect(() => {
     dispatch(listCategory())
+    if (id) {
+      const get = async (id) => {
+        const res = await listOneProduct(id)
+        form.setFieldsValue(res.data)
+        setImg(res.data.img)
+        setInitImg(res.data.img)
+      }
+      get(id)
+    }
   }, []);
-  const { reset } = useForm()
   const navigate = useNavigate()
   const onSubmit = data => {
+    console.log(data);
       const number = Number(data.categoryId)
-      dispatch(addProducts({ ...data, categoryId: number, img }))
+      dispatch(editProducts({ ...data, categoryId: number, img }))
       navigate('/admin/product')
-      // console.log(typeof number);
-      reset()
-
   }
   return (
     <>
@@ -52,11 +60,11 @@ const AddProduct = () => {
         <Col span={14}>
           <Typography.Title level={5}>Thông tin sản phẩm</Typography.Title>
           <Form
+            form={form}
             onFinish={onSubmit}
             autoComplete="on"
             labelCol={{ span: 24 }}
           >
-
             <Form.Item
               name="name"
               labelCol={{ span: 24 }}
@@ -124,8 +132,13 @@ const AddProduct = () => {
 
             <Form.Item>
               <Button type="primary" htmlType="submit">
-                Tạo mới sản phẩm
+                Cập nhận sản phẩm
               </Button>
+            </Form.Item>
+            <Form.Item
+              name="id" 
+            >
+              <Input hidden='true' disabled='true' size="large" />
             </Form.Item>
           </Form>
         </Col>
@@ -144,4 +157,4 @@ const Label = styled.div`
 	font-size: 13px;
 `
 
-export default AddProduct
+export default EditProduct

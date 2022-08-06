@@ -1,6 +1,7 @@
-{"orders":[
-{}
-],
+{
+  "orders": [
+    {}
+  ],
   "users": [
     {
       "email": "anhtuans2783@gmail.com",
@@ -91,6 +92,16 @@
       "description": "HP là một thương hiệu laptop với nhiều sản phẩm chất lượng được người sử dụng tin dùng. Với sản phẩm HP Envy X360 13-BD0063DX cũng sẽ không làm người dùng thất vọng, laptop sở hữu một thiết kế nhỏ gọn cùng cấu hình đáp ứng tốt nhiều nhu cầu sử dụng.",
       "img": "http://res.cloudinary.com/dv3vzmogk/image/upload/v1659623276/anhhtus/iypem5ltdmavpyjx4ia9.png",
       "id": 19
+    },
+    {
+      "name": "Hậu Chắm 02",
+      "originalPrice": 2323231111,
+      "saleOffPrice": 232299,
+      "categoryId": 3,
+      "feature": "sfsdcsadc",
+      "description": "sdf sadcscd",
+      "id": 20,
+      "img": "http://res.cloudinary.com/dv3vzmogk/image/upload/v1659785110/anhhtus/jpfgys0xhpygxtyuzdlq.png"
     }
   ],
   "categorys": [

@@ -20,15 +20,13 @@ const CartPage = () => {
         totalProducts += Number(item.price) * Number(item.quantity)
     })
     const createdAt = new Date()
-console.log(cart);
     const { register, handleSubmit, formState: { errors } } = useForm()
     const onSubmit = data => {
-        
         dispatch(AddOrders({...data, cart, createdAt: createdAt}))
         notify()
         setTimeout(() => {
-            navigate('/product')
-        }, 4000);
+            navigate('/')
+        }, 3000);
     }
     return (
         <div>
@@ -86,7 +84,7 @@ console.log(cart);
                                         </div>
                                         <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                                         <div className="mt-6 flex justify-center text-sm text-center text-gray-500">
-                                            <a href="/product">
+                                            <a href="/">
                                                 <p>
                                                 <button type="button" className="text-red-600 font-medium hover:text-red-500">Tiếp tục mua sắm<span aria-hidden="true"> →</span></button>
                                                 </p>
@@ -152,12 +150,12 @@ console.log(cart);
                                                         </div>
                                                         <div className="col-span-6  lg:col-span-2 sm:col-span-3">
                                                             <input {...register('ptgh', {required: true})} type="checkbox" className='rounded-full' id="ptgh" defaultValue={0} />
-                                                            <label className='text-left'>Standard Express <br /><span style={{ fontSize: 13, color: 'gray' }}>Nhận hàng trong vòng 5 ngày, đổi trả miễn phí</span></label>
-                                                            {errors.ptgh && <span className='text-red-500 text-sm'>*Tên bắt buộc phải nhập</span>}
+                                                            <label className='text-left text-sm font-medium text-gray-700 '>Standard Express <br /><span style={{ fontSize: 13, color: 'gray' }}>Nhận hàng trong vòng 5 ngày, đổi trả miễn phí</span></label>
+                                                            {errors.ptgh && <span className='text-red-500 text-sm'>*Bắt buộc phải chọn cách thức giao hàng</span>}
                                                         </div>
                                                         <div className="col-span-6 lg:col-span-2 sm:col-span-3">
                                                             <input {...register('ptgh', {required: true})} type="checkbox" id="ptgh" defaultValue={1} />
-                                                            <label className='text-left'>J&amp;T Express <br /><span style={{ fontSize: 13, color: 'gray' }}>Nhận hàng trong vòng 3 ngày,đổi trả miễn phí</span></label>
+                                                            <label className='text-left text-sm font-medium text-gray-700'>J&amp;T Express <br /><span style={{ fontSize: 13, color: 'gray' }}>Nhận hàng trong vòng 3 ngày,đổi trả miễn phí</span></label>
                                                            
                                                         </div>
                                                     </div>

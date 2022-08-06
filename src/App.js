@@ -7,6 +7,7 @@ import AddCategory from './pages/Admin/Category/AddCategory';
 import EditCategory from './pages/Admin/Category/EditCategory';
 import ListCategory from './pages/Admin/Category/list';
 import AddProduct from './pages/Admin/Product/AddProduct';
+import EditProduct from './pages/Admin/Product/EditProduct';
 import ProductList from './pages/Admin/Product/ProductList';
 import SignIn from './pages/Clients/Auth/Signin';
 import SignUp from './pages/Clients/Auth/Signup';
@@ -38,7 +39,7 @@ function App() {
           <Route path='product'>
             <Route index element={<ProductList />} />
             <Route path='add' element={<AddProduct />} />
-            <Route path=':id/edit' element={<AddProduct />} />
+            <Route path=':id/edit' element={<EditProduct />} />
           </Route>
           {/* <Route path='user'>
             <Route index element={<ListUser/>}/>
