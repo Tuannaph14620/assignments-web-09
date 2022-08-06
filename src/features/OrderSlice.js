@@ -4,6 +4,7 @@ import { addOrder, listOneOrder, listOrder, removeOrder } from "../api/order";
 export const AddOrders = createAsyncThunk(
     "order/addOrder",
     async (product)=>{
+        console.log("product", product);
         const {data} = await addOrder(product)
         localStorage.removeItem('cart')
         return data

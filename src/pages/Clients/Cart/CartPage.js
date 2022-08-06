@@ -10,7 +10,7 @@ import { AddOrders } from '../../../features/OrderSlice'
 const CartPage = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const notify = ()=> toast('Bạn đã đặt hàng thành công! Chúng tôi sẽ liên hệ lại sớm nhất với bạn để xác nhận đơn hàng!')
+    const notify = () => toast('Bạn đã đặt hàng thành công! Chúng tôi sẽ liên hệ lại sớm nhất với bạn để xác nhận đơn hàng!')
     const cart = useSelector(data => data.cart.value)
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart))
@@ -22,7 +22,7 @@ const CartPage = () => {
     const createdAt = new Date()
     const { register, handleSubmit, formState: { errors } } = useForm()
     const onSubmit = data => {
-        dispatch(AddOrders({...data, cart, createdAt: createdAt}))
+        dispatch(AddOrders({ ...data, cart, createdAt: createdAt }))
         notify()
         setTimeout(() => {
             navigate('/')
@@ -86,7 +86,7 @@ const CartPage = () => {
                                         <div className="mt-6 flex justify-center text-sm text-center text-gray-500">
                                             <a href="/">
                                                 <p>
-                                                <button type="button" className="text-red-600 font-medium hover:text-red-500">Tiếp tục mua sắm<span aria-hidden="true"> →</span></button>
+                                                    <button type="button" className="text-red-600 font-medium hover:text-red-500">Tiếp tục mua sắm<span aria-hidden="true"> →</span></button>
                                                 </p>
                                             </a><a>
                                             </a></div><a>
@@ -122,7 +122,7 @@ const CartPage = () => {
                                                         <div className="col-span-6 sm:col-span-3">
                                                             <label htmlFor="email-address" className="block text-left text-sm font-medium text-gray-700">Email </label>
                                                             <input type="text" {...register('email')} name="email" id="email" autoComplete="email" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-1 py-1 border-gray-300 rounded-md" />
-                                                            
+
                                                         </div>
                                                         <div className="col-span-6 sm:col-span-3">
                                                             <label htmlFor="email-address" className="block text-left text-sm font-medium text-gray-700">Số điện thoại</label>
@@ -149,21 +149,21 @@ const CartPage = () => {
                                                             <input type="text" {...register('code')} name="postal-code" id="postal-code" autoComplete="postal-code" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-1 py-1 border-gray-300 " />
                                                         </div>
                                                         <div className="col-span-6  lg:col-span-2 sm:col-span-3">
-                                                            <input {...register('ptgh', {required: true})} type="checkbox" className='rounded-full' id="ptgh" defaultValue={0} />
+                                                            <input {...register('ptgh', { required: true })} type="checkbox" className='rounded-full' id="ptgh" defaultValue={0} />
                                                             <label className='text-left text-sm font-medium text-gray-700 '>Standard Express <br /><span style={{ fontSize: 13, color: 'gray' }}>Nhận hàng trong vòng 5 ngày, đổi trả miễn phí</span></label>
                                                             {errors.ptgh && <span className='text-red-500 text-sm'>*Bắt buộc phải chọn cách thức giao hàng</span>}
                                                         </div>
                                                         <div className="col-span-6 lg:col-span-2 sm:col-span-3">
-                                                            <input {...register('ptgh', {required: true})} type="checkbox" id="ptgh" defaultValue={1} />
+                                                            <input {...register('ptgh', { required: true })} type="checkbox" id="ptgh" defaultValue={1} />
                                                             <label className='text-left text-sm font-medium text-gray-700'>J&amp;T Express <br /><span style={{ fontSize: 13, color: 'gray' }}>Nhận hàng trong vòng 3 ngày,đổi trả miễn phí</span></label>
-                                                           
+
                                                         </div>
                                                     </div>
                                                     <div className="mt-3">
-                                                       
+
                                                         <button className="btn_checkout flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">Comfirm</button>
-                                                      
-                                                        
+
+
                                                     </div>
                                                 </div>
                                             </div>
