@@ -1,5 +1,6 @@
 .wrapper-btn{
     display: flex;
+    justify-content: space-between;
     align-items: center;
     cursor: pointer;
 }
@@ -7,15 +8,18 @@
     margin-bottom: 10px;
 }
 .icon{
-    font-size: 20px;
-    margin-right: 15px;
+    flex-basis: 20%;
+    font-size: 17px;
 }
 .text{
-    font-size: 19px;
+    flex-basis: 60%;
+    font-size: 17px;
     font-weight: 500;
 }
 .icon-right{
-    font-size: 20px;
+    flex-basis: 20%;
+    font-size: 17px;
     width: 50%;
+    padding-right: 20px;
     text-align: right;
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import './App.css';
 import AdminLayout from './components/layout/AdminLayout';
 import ClientsLayout from './components/layout/ClientsLayout';
 import PrivateRouter from './components/PrivateRouter';
