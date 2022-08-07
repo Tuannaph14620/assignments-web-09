@@ -1,10 +1,6 @@
 {
   "orders": [
     {
-      "id": 1,
-      "name": "Âm thanh"
-    },
-    {
       "firstName": "Tuấn",
       "lastName": "Nguyễn",
       "email": "anhtuans2783@gmail.com",
@@ -51,6 +47,37 @@
       ],
       "createdAt": "2022-08-06T11:42:03.558Z",
       "id": 3
+    },
+    {
+      "firstName": "Tuấn",
+      "lastName": "Nguyễn",
+      "email": "anhtuans2783@gmail.com",
+      "phone": "1653574552",
+      "address": "Dược Hạ -Tiên Dược - Sóc Sơn - Hà Nội",
+      "city": "Hà Nội",
+      "district": "Nữ",
+      "code": "",
+      "ptgh": [
+        "0"
+      ],
+      "cart": [
+        {
+          "productId": 14,
+          "name": "iPhone 12 Pro Max 128GB I Chính hãng VN/A",
+          "img": "http://res.cloudinary.com/dv3vzmogk/image/upload/v1659621890/anhhtus/vlmgtymjqkfcrfpxchy7.png",
+          "price": 20000000,
+          "quantity": 3
+        },
+        {
+          "productId": 15,
+          "name": "Samsung Galaxy S22 Ultra (8GB - 128GB)",
+          "img": "http://res.cloudinary.com/dv3vzmogk/image/upload/v1659622002/anhhtus/ykxsl0eae1qw5a6ncfwa.png",
+          "price": 11000000,
+          "quantity": 2
+        }
+      ],
+      "createdAt": "2022-08-07T15:08:20.348Z",
+      "id": 4
     }
   ],
   "users": [

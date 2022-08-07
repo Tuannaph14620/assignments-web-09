@@ -3,9 +3,10 @@ import { PhoneOutlined, LaptopOutlined, TabletFilled, AudioOutlined, SettingOutl
 import { MenuProps } from 'antd';
 import { Breadcrumb, Layout, Menu } from 'antd';
 import { Link, Outlet } from 'react-router-dom'
+import Header from '../Header'
 import styled from 'styled-components';
 
-const { Header, Content, Sider } = Layout;
+const { Content, Sider } = Layout;
 
 const item3 = [
     { key: "cellphone", icon: <PhoneOutlined />, label: <Link to="/admin/product">Điện thoại</Link> },
@@ -16,13 +17,15 @@ const item3 = [
         key: "categories", icon: <SettingOutlined />,
         label: <Link to="/admin/category">Categories</Link>
     },
+    {
+        key: "order", icon: <SettingOutlined />,
+        label: <Link to="/admin/order">Đơn hàng</Link>
+    },
 ]
 const AdminLayout = () => {
     return (
         <Layout>
-            <HeaderCustom>
-                
-            </HeaderCustom>
+            <Header/>
             <Layout>
                 <Sider
                     collapsible={true}

@@ -6,6 +6,8 @@ import PrivateRouter from './components/PrivateRouter';
 import AddCategory from './pages/Admin/Category/AddCategory';
 import EditCategory from './pages/Admin/Category/EditCategory';
 import ListCategory from './pages/Admin/Category/list';
+import ListOrder from './pages/Admin/Order/ListOrder';
+import ListOrderDetail from './pages/Admin/Order/ListOrderDetail';
 import AddProduct from './pages/Admin/Product/AddProduct';
 import EditProduct from './pages/Admin/Product/EditProduct';
 import ProductList from './pages/Admin/Product/ProductList';
@@ -40,6 +42,10 @@ function App() {
             <Route index element={<ProductList />} />
             <Route path='add' element={<AddProduct />} />
             <Route path=':id/edit' element={<EditProduct />} />
+          </Route>
+          <Route path='order'>
+            <Route index element={<ListOrder />} />
+            <Route path=':id' element={<ListOrderDetail/>} />
           </Route>
           {/* <Route path='user'>
             <Route index element={<ListUser/>}/>
